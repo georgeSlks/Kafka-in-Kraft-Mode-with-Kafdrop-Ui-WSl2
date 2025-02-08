@@ -1,7 +1,7 @@
-# Kafka Raft Server with Kafdrop UI in Docker (WSL Compatible)
+# Kafka in KRaft mode Server with Kafdrop UI using Docker (WSL Compatible)
 
 ## Overview
-This repository provides a easy-to-use **Kafka Raft** server setup running inside a **Docker container** on Windows **(WSL)**. Also, includes **Kafdrop**, a web UI for managing Kafka topics, messages, and brokers.
+This repository provides a easy-to-use **Kafka Raft** server (instead of zookeeper) setup running inside a **Docker container** on Windows **(WSL)**. Also, includes **Kafdrop**, a web UI for managing Kafka topics, messages, and brokers.
 Finally, you can view a **connectivityTestScript.py** file which you can use for testing the connectivity with your Kafka server.
 
 ### Why?
