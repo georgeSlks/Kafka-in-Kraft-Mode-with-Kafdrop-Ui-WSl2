@@ -1,10 +1,11 @@
 # Kafka Raft Server with Kafdrop UI in Docker (WSL Compatible)
 
 ## Overview
-This project provides a easy-to-use **Kafka Raft** server setup running inside a **Docker container** on Windows **(WSL)**. Also includes **Kafdrop**, a web UI for managing Kafka topics, messages, and brokers.
+This repository provides a easy-to-use **Kafka Raft** server setup running inside a **Docker container** on Windows **(WSL)**. Also, includes **Kafdrop**, a web UI for managing Kafka topics, messages, and brokers.
+Finally, you can view a **connectivityTestScript.py** file which you can use for testing the connectivity with your Kafka server.
 
 ### Why?
-For a quick finctional solution setup for everyone needs a quick, functional environment on Windows.
+For a quick functional solution setup for everyone needs a quick, functional environment on Windows.
 This configuration removes the windows setup complexity by using **Docker Compose** inside linux enviroment.
 
 ## Technical Details
@@ -40,13 +41,16 @@ Below is a detailed explanation of each configuration setting in the `docker-com
 | `ports: "9000:9000"` | Exposes Kafdrop’s web UI on port 9000. |
 
 ## How to Use
-1. **Ensure Docker & WSL 2 are installed on your system.**
-2. **Run the following command in your terminal:**
+1. **Ensure Docker & WSL 2 are installed on your system (you can use Docker Desktop too).**
+1. **Create a directory in your linux enviroment with your project(optional)** 
+1. **Move the docker-compose.yml file to your directory or create a new one and copy-paste my configuration**
+2. **Run the following command in your linux terminal:**
    ```sh
    docker-compose up -d
    ```
-3. **Access Kafka through Kafdrop UI:** Open your browser and go to [http://localhost:9000](http://localhost:9000).
-4. **Start Producing & Consuming Messages!**
+3. **Test connectivity with the server:** Using my connectivityTestScript.py script on localhost port 9092.
+4. **Access Kafka through Kafdrop UI:** Open your browser and go to [http://localhost:9000](http://localhost:9000).
+4. **Start Producing & Consuming Messages ;)**
 
 ## Troubleshooting
 - **Issue: "Kafka connection refused on port 9092"**  
