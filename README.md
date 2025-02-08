@@ -42,19 +42,16 @@ Below is a detailed explanation of each configuration setting in the `docker-com
 
 ## How to Use
 1. **Ensure Docker & WSL 2 are installed on your system (you can use Docker Desktop too).**
-1. **Create a directory in your linux enviroment with your project(optional)** 
-1. **Move the docker-compose.yml file to your directory or create a new one and copy-paste my configuration**
-2. **Run the following command in your linux terminal:**
+2. **Create a directory in your linux enviroment with your project(optional)** 
+3. **Move the docker-compose.yml file to your directory or create a new one and copy-paste my configuration**
+4. **Make sure Docker is running and that no other process is using port 9092.**
+5. **Run the following command in your linux terminal:**
    ```sh
    docker-compose up -d
    ```
-3. **Test connectivity with the server:** Using my connectivityTestScript.py script on localhost port 9092.
-4. **Access Kafka through Kafdrop UI:** Open your browser and go to [http://localhost:9000](http://localhost:9000).
-4. **Start Producing & Consuming Messages ;)**
-
-## Troubleshooting
-- **Issue: "Kafka connection refused on port 9092"**  
-  ✅ Make sure Docker is running and that no other process is using port 9092.
+6. **Test connectivity with the server:** Using my connectivityTestScript.py script on localhost port 9092.
+7. **Access Kafka through Kafdrop UI:** Open your browser and go to [http://localhost:9000](http://localhost:9000).
+8. **Start Producing & Consuming Messages**
 
 
 
