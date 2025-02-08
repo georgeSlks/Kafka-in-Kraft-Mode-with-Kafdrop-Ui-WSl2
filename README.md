@@ -18,7 +18,7 @@ This configuration removes the windows setup complexity by using **Docker Compos
 Below is a detailed explanation of each configuration setting in the `docker-compose.yml` file:
 
 | Configuration Line | Explanation |
-|--------------|-------------|
+|-----------------|-------------|
 | `image: apache/kafka:latest` | Uses the latest Apache Kafka Docker image. |
 | `KAFKA_NODE_ID=1` | Assigns a unique ID to this Kafka node. |
 | `KAFKA_PROCESS_ROLES=controller,broker` | Enables Kafka Raft mode by combining the broker and controller roles (no Zookeeper needed). |
