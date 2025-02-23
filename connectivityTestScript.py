@@ -1,16 +1,29 @@
-########## A SIMPLE TCP/IP SOCKET SCRIPT FOR TESTING CONNECTION WITH THE KAFKA RAFT SERVER ######################
-##########       REMINDER: THE KAFDROP PORT IS DIFFERENT THAN THE KAFKA PORT (9092)        ######################
-##########        YOU CAN ALSO FIND YOUR KAFDROP UI APPLICATION ON localhost:9000          ######################
+from pyspark.sql import SparkSession
+from pyspark.sql.functions import col
 
-import socket
+# Initialize Spark session
+spark = SparkSession.builder \
+    .appName("KafkaStreaming") \
+    .config("spark.jars.packages","org.apache.spark:spark-sql-kafka-0-10_2.12:3.5.0") \
+    .getOrCreate()
 
-def test_kafka_connection(host, port):
-    try:
-        s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-        s.connect((host, port))
-        print(f"Connected to Kafka at {host}:{port}")
-    except Exception as e:
-        print(f"Failed to connect to Kafka: {e}")
+# Read data from Kafka topic
+df = spark \
+    .readStream \
+    .format("kafka") \
+    .option("kafka.bootstrap.servers", "localhost:9092") \
+    .option("subscribe", "TestTopic") \
+    .load()
 
-# Test Kafka connection
-test_kafka_connection("localhost", 9092)
+# Extract the value field from Kafka message (bytes -> string)
+df = df.selectExpr("CAST(value AS STRING)")
+
+# Print the output of the stream
+query = df \
+    .writeStream \
+    .outputMode("append") \
+    .format("console") \
+    .start()
+
+# Wait for the stream to finish
+query.awaitTermination()
